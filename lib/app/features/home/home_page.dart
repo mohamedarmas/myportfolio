@@ -42,10 +42,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     items = [
-      Presentation(itemScrollController),
-      const Projects(),
-      const Experience(),
-      const Social(),
       ContactWidget(
         contactController: ContactController(
           contactRepository: ContactRepositoryImpl(
@@ -54,6 +50,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      Presentation(itemScrollController),
+      const Projects(),
+      const Experience(),
+      const Social(),
       const CustomFooter(),
     ];
   }

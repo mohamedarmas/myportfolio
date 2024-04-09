@@ -76,3 +76,7 @@ firebase.json
 firebase-config.js
 .firebase
 package.json
+
+# Environment configuration
+.env
+lib/infra/env/env.g.dart

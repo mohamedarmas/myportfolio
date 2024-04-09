@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 
 import 'package:site/app/core/injections/injections.dart';
 import 'package:site/app/core/l10n/l10n.dart';
@@ -12,6 +13,7 @@ import 'package:site/app/features/home/widgets/contact/widgets/widgets.dart';
 import 'package:site/app/widgets/snack_bars/snack_bars.dart';
 import 'package:site/data/models/models.dart' as models;
 import 'package:site/data/repositories/contact/contact.dart';
+import 'package:site/data/services/recaptcha/recaptcha.dart';
 
 class ContactWidget extends StatelessWidget {
   ContactWidget({
@@ -42,27 +44,39 @@ class ContactWidget extends StatelessWidget {
         emailController: emailController,
         subjectController: subjectController,
         messageController: messageController,
-        onPressed: () {
+        onPressed: () async {
           if (formKey.currentState?.validate() ?? false) {
-            appShowSnackBar(
-              context,
-              text: AppTexts.get(context).emailSendedWithSuccess,
-              icon: Icons.check,
-              color: AppColors.primaryDark,
-              width: 300,
-            );
-            _contactController?.sendMail(
-              contact: models.Contact(
-                name: nameController.text,
-                email: emailController.text,
-                message: messageController.text,
-                subject: subjectController.text,
-              ),
-            );
-            nameController.clear();
-            emailController.clear();
-            messageController.clear();
-            subjectController.clear();
+            final isNotABot = await RecaptchaService.isNotABot();
+
+            if (isNotABot) {
+              formKey.currentState!.save();
+              if (context.mounted) {
+                appShowSnackBar(
+                  context,
+                  text: AppTexts.get(context).emailSendedWithSuccess,
+                  icon: Icons.check,
+                  color: AppColors.primaryDark,
+                  width: 300,
+                );
+              }
+
+              _contactController?.sendMail(
+                contact: models.Contact(
+                  name: nameController.text,
+                  email: emailController.text,
+                  message: messageController.text,
+                  subject: subjectController.text,
+                ),
+              );
+              for (var controller in [
+                nameController,
+                emailController,
+                messageController,
+                subjectController,
+              ]) {
+                controller.clear();
+              }
+            }
           }
         },
       );
@@ -79,4 +93,9 @@ class ContactWidget extends StatelessWidget {
       },
     );
   }
+}
+
+Future<void> generateToken() async {
+  final token = await GRecaptchaV3.execute('submit') ?? '';
+  debugPrint('Token: $token');
 }
