@@ -7,6 +7,9 @@ class ConstantsAPI {
     'Content-Type': 'application/json',
   };
 
+  /// Send email endpoint.
+  static final apiSendMail = Env.apiSendMail;
+
   /// Recaptcha information.
   static final recaptchaPublicKey = Env.recaptchaPublicKey;
   static final recaptchaSecretKey = Env.recaptchaSecretKey;

@@ -7,4 +7,13 @@ class Contact {
   });
 
   final String name, email, message, subject;
+
+  static Map<String, dynamic> toJson(Contact contact) {
+    return {
+      'sender_name': contact.name,
+      'source_email': contact.email,
+      'template_subject': contact.subject,
+      'template_body': contact.message,
+    };
+  }
 }
