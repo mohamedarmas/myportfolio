@@ -38,6 +38,7 @@
     "text": "Texto",
     "sendEmailUpper": "ENVIAR EMAIL",
     "emailSendedWithSuccess": "¡Email enviado exitosamente!",
+    "emailNotSended": "¡Error al enviar el email!",
     "letsChatCallMe": "Hablemos, llámame:",
     "hyphen": " - ",
     "username": "@felipecastrosales",

@@ -122,6 +122,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get emailSendedWithSuccess => '¡Email enviado exitosamente!';
 
   @override
+  String get emailNotSended => '¡Error al enviar el email!';
+
+  @override
   String get letsChatCallMe => 'Hablemos, llámame:';
 
   @override

@@ -329,6 +329,12 @@ abstract class AppLocalizations {
   /// **'E-mail enviado com sucesso!'**
   String get emailSendedWithSuccess;
 
+  /// No description provided for @emailNotSended.
+  ///
+  /// In pt, this message translates to:
+  /// **'Erro ao enviar e-mail!'**
+  String get emailNotSended;
+
   /// No description provided for @letsChatCallMe.
   ///
   /// In pt, this message translates to:

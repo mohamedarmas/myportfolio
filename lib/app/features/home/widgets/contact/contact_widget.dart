@@ -76,6 +76,14 @@ class ContactWidget extends StatelessWidget {
               ]) {
                 controller.clear();
               }
+            } else if (context.mounted) {
+              appShowSnackBar(
+                context,
+                text: AppTexts.get(context).emailNotSended,
+                icon: Icons.error,
+                color: AppColors.red,
+                width: 300,
+              );
             }
           }
         },

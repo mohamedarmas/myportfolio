@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +14,10 @@ class RecaptchaService {
 
   static Future<bool> isNotABot() async {
     final verificationResponse = await _getVerificationResponse();
+
+    if (Platform.isAndroid || Platform.isIOS) {
+      return true;
+    }
 
     if (verificationResponse == null) {
       return false;
@@ -38,6 +43,7 @@ class RecaptchaService {
           },
         );
         final body = response.body;
+
         return RecaptchaResponse.fromJson(body);
       } else {
         log('RecaptchaService._getVerificationResponse, token is empty');
