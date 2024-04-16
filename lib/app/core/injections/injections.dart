@@ -26,7 +26,6 @@ void configureDependencies() {
   if (!getIt.isRegistered<ContactRepository>()) {
     getIt.registerSingleton<ContactRepository>(
       ContactRepositoryImpl(
-        firebaseRemoteConfig: getIt(),
         httpClient: getIt(),
       ),
     );

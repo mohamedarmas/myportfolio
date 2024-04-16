@@ -16,25 +16,8 @@ void main() {
     mockHttpClient = MockHttpClient();
 
     contactRepository = ContactRepositoryImpl(
-      firebaseRemoteConfig: mockFirebaseRemoteConfig,
       httpClient: mockHttpClient,
     );
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('service_id'),
-    ).thenReturn('service_id');
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('template_id'),
-    ).thenReturn('template_id');
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('user_id'),
-    ).thenReturn('user_id');
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('to_email'),
-    ).thenReturn('to_email');
 
     when(
       () => mockHttpClient.post(

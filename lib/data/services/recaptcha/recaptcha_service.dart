@@ -1,6 +1,6 @@
 import 'dart:developer';
-import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 import 'package:http/http.dart' as http;
 import 'package:site/data/constants/constants_api.dart';
@@ -15,7 +15,10 @@ class RecaptchaService {
   static Future<bool> isNotABot() async {
     final verificationResponse = await _getVerificationResponse();
 
-    if (Platform.isAndroid || Platform.isIOS) {
+    if ([
+      TargetPlatform.iOS,
+      TargetPlatform.android,
+    ].contains(defaultTargetPlatform)) {
       return true;
     }
 

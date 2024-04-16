@@ -25,6 +25,8 @@ class HomePage extends StatefulWidget {
   })  : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt(),
         _httpClient = httpClient ?? getIt();
 
+  /// The [FirebaseRemoteConfig] instance is here to be used for future updates and configurations.
+  // ignore: unused_field
   final FirebaseRemoteConfig _firebaseRemoteConfig;
   final http.Client _httpClient;
 
@@ -42,18 +44,17 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     items = [
-      ContactWidget(
-        contactController: ContactController(
-          contactRepository: ContactRepositoryImpl(
-            firebaseRemoteConfig: widget._firebaseRemoteConfig,
-            httpClient: widget._httpClient,
-          ),
-        ),
-      ),
       Presentation(itemScrollController),
       const Projects(),
       const Experience(),
       const Social(),
+      ContactWidget(
+        contactController: ContactController(
+          contactRepository: ContactRepositoryImpl(
+            httpClient: widget._httpClient,
+          ),
+        ),
+      ),
       const CustomFooter(),
     ];
   }

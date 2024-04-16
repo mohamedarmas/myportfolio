@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Contact {
   Contact({
     required this.name,
@@ -16,4 +18,6 @@ class Contact {
       'template_body': contact.message,
     };
   }
+
+  static String toJsonString(Contact contact) => jsonEncode(toJson(contact));
 }

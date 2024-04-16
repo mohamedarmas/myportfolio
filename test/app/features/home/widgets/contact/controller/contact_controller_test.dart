@@ -12,38 +12,18 @@ import '../../../../../../utils/utils.dart';
 
 void main() {
   setupFirebaseAuthMocks();
-
-  late MockFirebaseRemoteConfig mockFirebaseRemoteConfig;
   late MockHttpClient mockHttpClient;
   late ContactRepositoryImpl contactRepository;
   late ContactController contactController;
 
   setUp(() {
-    mockFirebaseRemoteConfig = MockFirebaseRemoteConfig();
     mockHttpClient = MockHttpClient();
     contactRepository = ContactRepositoryImpl(
-      firebaseRemoteConfig: mockFirebaseRemoteConfig,
       httpClient: mockHttpClient,
     );
     contactController = ContactController(
       contactRepository: contactRepository,
     );
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('service_id'),
-    ).thenReturn('service_id');
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('template_id'),
-    ).thenReturn('template_id');
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('user_id'),
-    ).thenReturn('user_id');
-
-    when(
-      () => mockFirebaseRemoteConfig.getString('to_email'),
-    ).thenReturn('to_email');
 
     when(
       () => mockHttpClient.post(

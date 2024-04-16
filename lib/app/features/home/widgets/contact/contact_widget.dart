@@ -22,7 +22,6 @@ class ContactWidget extends StatelessWidget {
   }) : _contactController = contactController ??
             ContactController(
               contactRepository: ContactRepositoryImpl(
-                firebaseRemoteConfig: getIt(),
                 httpClient: getIt(),
               ),
             );
@@ -49,7 +48,7 @@ class ContactWidget extends StatelessWidget {
             final isNotABot = await RecaptchaService.isNotABot();
 
             if (isNotABot) {
-              formKey.currentState!.save();
+              formKey.currentState?.save();
               if (context.mounted) {
                 appShowSnackBar(
                   context,
@@ -68,6 +67,7 @@ class ContactWidget extends StatelessWidget {
                   subject: subjectController.text,
                 ),
               );
+
               for (var controller in [
                 nameController,
                 emailController,
@@ -76,6 +76,8 @@ class ContactWidget extends StatelessWidget {
               ]) {
                 controller.clear();
               }
+
+              formKey.currentState?.reset();
             } else if (context.mounted) {
               appShowSnackBar(
                 context,
