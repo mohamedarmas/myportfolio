@@ -23,8 +23,9 @@ First, Follow the [🤔 How to Use](./README.md#-how-to-use) steps.
 ## Contact Form
 
 - Related to Contact Form:
-  - Create your account inside `emailjs` and make your changes.
-  - You can see [this video](https://www.youtube.com/watch?v=9HW3MZ_tsdo), to help you on practice.
+  - Check my api [here](https://github.com/felipecastrosales/site-api) and make your changes.
+  - You need configurate your AWS SES, and put your credentials inside the `.env` file.
+  - After that, configure AWS Lambda and API Gateway, and deploy your API.
 
 ## Firebase
 

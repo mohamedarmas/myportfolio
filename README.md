@@ -64,7 +64,7 @@ I'm sure this will be one of the best examples of the Flutter Web project in a c
   - All of them using [`mocktail`](https://pub.dev/packages/mocktail).
 - Internationalization:
   - With support to 3 languages: English, Portuguese and Spanish;
-- Feature to send an email to the user using [`emailjs API`](https://www.emailjs.com/);
+- Feature to send an email to the user using [`AWS SES`](https://aws.amazon.com/ses/), [`AWS Lambda`](https://aws.amazon.com/lambda/) and [`AWS API Gateway`](https://aws.amazon.com/api-gateway/);
 - Settings:
   - Firebase Hosting;
   - Google Domains;
