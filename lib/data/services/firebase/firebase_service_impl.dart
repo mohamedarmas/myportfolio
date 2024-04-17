@@ -23,6 +23,7 @@ class FirebaseServiceImpl implements FirebaseService {
     try {
       await remoteConfig.setDefaults(remoteConfigKeys);
       await remoteConfig.setConfigSettings(remoteConfigSettings);
+      // as long as no fetchAndActivate is needed, this is not necessary
       // await remoteConfig.fetchAndActivate();
     } catch (e, s) {
       developer.log(
