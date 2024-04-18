@@ -48,7 +48,6 @@ class ContactWidget extends StatelessWidget {
             final isNotABot = await RecaptchaService.isNotABot();
 
             if (isNotABot) {
-              formKey.currentState?.save();
               if (context.mounted) {
                 appShowSnackBar(
                   context,
@@ -76,8 +75,6 @@ class ContactWidget extends StatelessWidget {
               ]) {
                 controller.clear();
               }
-
-              formKey.currentState?.reset();
             } else if (context.mounted) {
               appShowSnackBar(
                 context,
