@@ -13,14 +13,14 @@ class RecaptchaService {
       await GRecaptchaV3.ready(ConstantsAPI.recaptchaPublicKey);
 
   static Future<bool> isNotABot() async {
-    final verificationResponse = await _getVerificationResponse();
-
     if ([
       TargetPlatform.iOS,
       TargetPlatform.android,
     ].contains(defaultTargetPlatform)) {
       return true;
     }
+
+    final verificationResponse = await _getVerificationResponse();
 
     if (verificationResponse == null) {
       return false;
@@ -43,8 +43,12 @@ class RecaptchaService {
           },
           headers: {
             'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers':
+                'Origin, X-Requested-With, Content-Type, Accept',
           },
         );
+
         final body = response.body;
 
         return RecaptchaResponse.fromJson(body);
