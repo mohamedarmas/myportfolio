@@ -23,6 +23,7 @@ class ContactRepositoryImpl implements ContactRepository {
         body: Contact.toJsonString(contact),
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
       );
 
