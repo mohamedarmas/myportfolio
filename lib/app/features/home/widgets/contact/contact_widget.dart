@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
 
 import 'package:site/app/core/injections/injections.dart';
 import 'package:site/app/core/l10n/l10n.dart';
@@ -100,9 +99,4 @@ class ContactWidget extends StatelessWidget {
       },
     );
   }
-}
-
-Future<void> generateToken() async {
-  final token = await GRecaptchaV3.execute('submit') ?? '';
-  debugPrint('Token: $token');
 }
