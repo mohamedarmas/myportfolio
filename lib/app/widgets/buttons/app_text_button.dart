@@ -7,15 +7,18 @@ class AppTextButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
+    this.onLongPress,
   });
 
   final VoidCallback onPressed;
+  final VoidCallback? onLongPress;
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
+      onLongPress: onLongPress,
       style: TextButton.styleFrom(
         minimumSize: Size.zero,
         padding: EdgeInsets.zero,

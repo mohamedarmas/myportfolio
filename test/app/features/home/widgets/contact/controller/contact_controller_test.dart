@@ -1,8 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
 import 'package:site/app/features/home/widgets/contact/controller/contact_controller.dart';
@@ -28,11 +28,15 @@ void main() {
     when(
       () => mockHttpClient.post(
         any(),
-        headers: any(named: 'headers'),
-        body: any(named: 'body'),
+        data: any(named: 'data'),
+        options: any(named: 'options'),
       ),
     ).thenAnswer(
-      (_) async => http.Response('', 200),
+      (_) async => Response(
+        data: {},
+        statusCode: 200,
+        requestOptions: RequestOptions(path: ''),
+      ),
     );
   });
 

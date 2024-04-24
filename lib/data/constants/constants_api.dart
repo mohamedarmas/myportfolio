@@ -2,7 +2,7 @@ import 'package:site/infra/env/env.dart';
 
 class ConstantsAPI {
   /// Send email endpoint.
-  static final apiSendMail = Uri.parse(Env.apiSendMail);
+  static final apiSendMail = Env.apiSendMail;
 
   /// Recaptcha information.
   static final recaptchaPublicKey = Env.recaptchaPublicKey;

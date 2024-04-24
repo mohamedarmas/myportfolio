@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:g_recaptcha_v3/g_recaptcha_v3.dart';
-import 'package:http/http.dart' as http;
 import 'package:site/data/constants/constants_api.dart';
 import 'package:site/data/services/recaptcha/recaptcha.dart';
 
@@ -35,23 +34,23 @@ class RecaptchaService {
       final token = await GRecaptchaV3.execute('submit') ?? '';
 
       if (token.isNotEmpty) {
-        final response = await http.post(
-          ConstantsAPI.recaptchaUrl,
-          body: {
-            'secret': ConstantsAPI.recaptchaSecretKey,
-            'response': token,
-          },
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers':
-                'Origin, X-Requested-With, Content-Type, Accept',
-          },
-        );
+        // final response = await http.post(
+        //   ConstantsAPI.recaptchaUrl,
+        //   body: {
+        //     'secret': ConstantsAPI.recaptchaSecretKey,
+        //     'response': token,
+        //   },
+        //   headers: {
+        //     'Access-Control-Allow-Origin': '*',
+        //     'Access-Control-Allow-Methods': 'POST',
+        //     'Access-Control-Allow-Headers':
+        //         'Origin, X-Requested-With, Content-Type, Accept',
+        //   },
+        // );
 
-        final body = response.body;
+        // final body = response.body;
 
-        return RecaptchaResponse.fromJson(body);
+        // return RecaptchaResponse.fromJson(body);
       } else {
         log('RecaptchaService._getVerificationResponse, token is empty');
       }

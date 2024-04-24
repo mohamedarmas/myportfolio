@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:site/app/core/injections/injections.dart';
 
 import 'package:site/app/core/l10n/l10n.dart';
+import 'package:site/app/features/home/widgets/contact/controller/contact_controller.dart';
 import 'package:site/app/features/home/widgets/contact/widgets/widgets.dart';
 import 'package:site/app/utils/contact_validators.dart';
 import 'package:site/app/widgets/buttons/buttons.dart';
 import 'package:site/app/widgets/dividers/dividers.dart';
+import 'package:site/data/repositories/contact/contact_repository_impl.dart';
+import 'package:site/data/models/models.dart' as models;
 
 class CustomForm extends StatelessWidget {
-  const CustomForm({
+  CustomForm({
     super.key,
     required this.formKey,
     required this.nameController,
@@ -15,7 +19,13 @@ class CustomForm extends StatelessWidget {
     required this.subjectController,
     required this.messageController,
     required this.onPressed,
-  });
+    ContactController? contactController,
+  }) : _contactController = contactController ??
+            ContactController(
+              contactRepository: ContactRepositoryImpl(
+                httpClient: getIt(),
+              ),
+            );
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameController;
@@ -23,6 +33,8 @@ class CustomForm extends StatelessWidget {
   final TextEditingController subjectController;
   final TextEditingController messageController;
   final VoidCallback onPressed;
+
+  final ContactController? _contactController;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +81,16 @@ class CustomForm extends StatelessWidget {
               child: AppTextButton(
                 text: AppTexts.get(context).sendEmailUpper,
                 onPressed: onPressed,
+                onLongPress: () {
+                  _contactController?.sendMail(
+                    contact: models.Contact(
+                      name: 'felipe sales',
+                      email: 'soufeliposales@gmail.com',
+                      message: 'teste de mensagem',
+                      subject: 'vamos testar, mais uma vez',
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(height: 60),

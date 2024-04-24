@@ -1,5 +1,5 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
 import 'package:site/data/repositories/contact/contact.dart';
@@ -7,14 +7,11 @@ import 'package:site/data/repositories/contact/contact.dart';
 import '../../../utils/utils.dart';
 
 void main() {
-  late MockFirebaseRemoteConfig mockFirebaseRemoteConfig;
   late MockHttpClient mockHttpClient;
   late ContactRepositoryImpl contactRepository;
 
   setUp(() {
-    mockFirebaseRemoteConfig = MockFirebaseRemoteConfig();
     mockHttpClient = MockHttpClient();
-
     contactRepository = ContactRepositoryImpl(
       httpClient: mockHttpClient,
     );
@@ -22,13 +19,14 @@ void main() {
     when(
       () => mockHttpClient.post(
         any(),
-        headers: any(named: 'headers'),
-        body: any(named: 'body'),
+        data: any(named: 'data'),
+        options: any(named: 'options'),
       ),
     ).thenAnswer(
-      (_) async => http.Response(
-        '',
-        200,
+      (_) async => Response(
+        data: {},
+        statusCode: 200,
+        requestOptions: RequestOptions(path: ''),
       ),
     );
   });

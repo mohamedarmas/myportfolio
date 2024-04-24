@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import 'package:site/data/constants/constants_api.dart';
 
 import 'package:site/data/models/models.dart';
@@ -8,10 +8,10 @@ import 'package:site/data/repositories/contact/contact.dart';
 
 class ContactRepositoryImpl implements ContactRepository {
   ContactRepositoryImpl({
-    required http.Client httpClient,
+    required Dio httpClient,
   }) : _httpClient = httpClient;
 
-  final http.Client _httpClient;
+  final Dio _httpClient;
 
   @override
   Future sendMail({
@@ -20,14 +20,10 @@ class ContactRepositoryImpl implements ContactRepository {
     try {
       final response = await _httpClient.post(
         ConstantsAPI.apiSendMail,
-        body: Contact.toJsonString(contact),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
+        data: Contact.toJson(contact),
       );
 
-      return response;
+      return response.data;
     } catch (e, s) {
       log('Error: $e', stackTrace: s);
     }

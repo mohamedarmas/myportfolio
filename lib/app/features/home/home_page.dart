@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
+import 'package:dio/dio.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import 'package:site/app/core/injections/injections.dart';
@@ -21,14 +20,14 @@ class HomePage extends StatefulWidget {
   HomePage({
     super.key,
     FirebaseRemoteConfig? firebaseRemoteConfig,
-    http.Client? httpClient,
+    Dio? httpClient,
   })  : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt(),
         _httpClient = httpClient ?? getIt();
 
   /// The [FirebaseRemoteConfig] instance is here to be used for future updates and configurations.
   // ignore: unused_field
   final FirebaseRemoteConfig _firebaseRemoteConfig;
-  final http.Client _httpClient;
+  final Dio _httpClient;
 
   @override
   State<HomePage> createState() => _HomePageState();

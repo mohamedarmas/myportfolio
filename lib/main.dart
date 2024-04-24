@@ -16,10 +16,12 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await FirebaseServiceImpl().setUpInitialization();
 
-    if (kIsWeb) {
-      await RecaptchaService.initiate();
-    }
+    // if (kIsWeb) {
+    //   debugPrint('main: isWeb');
+    //   await RecaptchaService.initiate();
+    // }
 
+    debugPrint('main: runZonedGuarded 2');
     setPathUrlStrategy();
     configureDependencies();
     runApp(

@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
+import 'package:dio/dio.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
 import 'package:site/app/core/injections/injections.dart';
 import 'package:site/app/core/l10n/l10n.dart';
@@ -12,12 +11,12 @@ class AppWidget extends StatelessWidget {
   AppWidget({
     super.key,
     FirebaseRemoteConfig? firebaseRemoteConfig,
-    http.Client? httpClient,
+    Dio? httpClient,
   })  : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt(),
         _httpClient = httpClient ?? getIt();
 
   final FirebaseRemoteConfig _firebaseRemoteConfig;
-  final http.Client _httpClient;
+  final Dio _httpClient;
 
   @override
   Widget build(BuildContext context) {

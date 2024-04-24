@@ -44,9 +44,10 @@ class ContactWidget extends StatelessWidget {
         messageController: messageController,
         onPressed: () async {
           if (formKey.currentState?.validate() ?? false) {
-            final isNotABot = await RecaptchaService.isNotABot();
+            // final isNotABot = await RecaptchaService.isNotABot();
 
-            if (isNotABot) {
+            // if (isNotABot) {
+            if (true) {
               if (context.mounted) {
                 appShowSnackBar(
                   context,
@@ -60,7 +61,7 @@ class ContactWidget extends StatelessWidget {
               _contactController?.sendMail(
                 contact: models.Contact(
                   name: nameController.text,
-                  email: emailController.text,
+                  email: emailController.text.trim(),
                   message: messageController.text,
                   subject: subjectController.text,
                 ),
