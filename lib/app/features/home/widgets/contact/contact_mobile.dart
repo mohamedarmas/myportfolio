@@ -40,6 +40,7 @@ class ContactMobile extends StatelessWidget {
           ),
         ),
         SingleChildScrollViewWithoutScroll(
+          primary: false,
           child: Column(
             children: [
               MobileBody(
