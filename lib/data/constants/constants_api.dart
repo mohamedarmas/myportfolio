@@ -7,6 +7,5 @@ class ConstantsAPI {
   /// Recaptcha information.
   static final recaptchaPublicKey = Env.recaptchaPublicKey;
   static final recaptchaSecretKey = Env.recaptchaSecretKey;
-  static final recaptchaUrl =
-      Uri.parse('https://www.google.com/recaptcha/api/siteverify');
+  static const recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
 }

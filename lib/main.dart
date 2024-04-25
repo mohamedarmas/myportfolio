@@ -9,7 +9,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'package:site/app/app_widget.dart';
 import 'package:site/app/core/injections/injections.dart';
 import 'package:site/data/services/firebase/firebase.dart';
-import 'package:site/data/services/recaptcha/recaptcha.dart';
+// import 'package:site/data/services/recaptcha/recaptcha.dart';
 
 Future<void> main() async {
   await runZonedGuarded(() async {
@@ -17,7 +17,6 @@ Future<void> main() async {
     await FirebaseServiceImpl().setUpInitialization();
 
     // if (kIsWeb) {
-    //   debugPrint('main: isWeb');
     //   await RecaptchaService.initiate();
     // }
 
