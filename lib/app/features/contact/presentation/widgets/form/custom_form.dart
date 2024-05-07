@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:site/app/core/injections/injections.dart';
 
 import 'package:site/app/core/l10n/l10n.dart';
-import 'package:site/app/features/home/widgets/contact/controller/contact_controller.dart';
-import 'package:site/app/features/home/widgets/contact/widgets/widgets.dart';
+import 'package:site/app/features/contact/presentation/controller/contact_controller.dart';
+import 'package:site/app/features/contact/presentation/widgets/widgets.dart';
 import 'package:site/app/utils/contact_validators.dart';
 import 'package:site/app/widgets/buttons/buttons.dart';
 import 'package:site/app/widgets/dividers/dividers.dart';

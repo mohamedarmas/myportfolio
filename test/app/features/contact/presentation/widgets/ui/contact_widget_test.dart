@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:site/app/features/home/widgets/contact/contact_mobile.dart';
-import 'package:site/app/features/home/widgets/contact/contact_web.dart';
-import 'package:site/app/features/home/widgets/contact/contact_widget.dart';
-import 'package:site/app/features/home/widgets/contact/controller/contact_controller.dart';
+import 'package:site/app/features/contact/presentation/widgets/ui/contact_mobile.dart';
+import 'package:site/app/features/contact/presentation/widgets/ui/contact_web.dart';
+import 'package:site/app/features/contact/presentation/widgets/ui/contact_widget.dart';
+import 'package:site/app/features/contact/presentation/controller/contact_controller.dart';
 
-import '../../../../../flutter_test_config.dart';
-import '../../../../../utils/utils.dart';
+import '../../../../../../flutter_test_config.dart';
+import '../../../../../../utils/utils.dart';
 
 void main() {
   late ContactController contactController;
