@@ -5,10 +5,10 @@ import 'package:site/app/core/l10n/l10n.dart';
 import 'package:site/app/core/responsive/responsive.dart';
 import 'package:site/app/core/shared/app_keys.dart';
 import 'package:site/app/core/tokens/tokens.dart';
+import 'package:site/app/features/contact/domain/models/contact.dart';
 import 'package:site/app/features/contact/presentation/controller/contact_controller.dart';
 import 'package:site/app/features/contact/presentation/widgets/widgets.dart';
 import 'package:site/app/widgets/snack_bars/snack_bars.dart';
-import 'package:site/data/models/models.dart' as models;
 import 'package:site/data/repositories/contact/contact.dart';
 // import 'package:site/data/services/recaptcha/recaptcha.dart';
 
@@ -55,7 +55,7 @@ class ContactWidget extends StatelessWidget {
             }
 
             _contactController?.sendMail(
-              contact: models.Contact(
+              contact: Contact(
                 name: nameController.text,
                 email: emailController.text.trim(),
                 message: messageController.text,

@@ -1,4 +1,4 @@
-import 'package:site/data/models/models.dart';
+import 'package:site/app/features/contact/domain/models/contact.dart';
 
 class AppFixtures {
   final tContact = Contact(
