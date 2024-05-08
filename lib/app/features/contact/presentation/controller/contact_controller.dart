@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:site/app/core/injections/injections.dart';
-import 'package:site/app/features/contact/domain/models/contact.dart';
-import 'package:site/data/repositories/contact/contact.dart';
+import 'package:site/app/features/contact/contact.dart';
 
 class ContactController extends ChangeNotifier {
   ContactController({

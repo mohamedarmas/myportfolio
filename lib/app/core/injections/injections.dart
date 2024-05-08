@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:site/app/features/contact/contact.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:site/data/repositories/contact/contact.dart';
 import 'package:site/data/services/firebase/firebase.dart';
 
 final getIt = GetIt.I;

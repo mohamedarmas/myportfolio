@@ -2,9 +2,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import 'package:site/app/features/contact/domain/models/contact.dart';
+import 'package:site/app/features/contact/contact.dart';
 import 'package:site/data/constants/constants_api.dart';
-import 'package:site/data/repositories/contact/contact.dart';
 
 class ContactRepositoryImpl implements ContactRepository {
   ContactRepositoryImpl({

@@ -8,7 +8,7 @@ import 'package:site/app/features/contact/presentation/widgets/widgets.dart';
 import 'package:site/app/utils/contact_validators.dart';
 import 'package:site/app/widgets/buttons/buttons.dart';
 import 'package:site/app/widgets/dividers/dividers.dart';
-import 'package:site/data/repositories/contact/contact_repository_impl.dart';
+import 'package:site/app/features/contact/data/repositories/contact_repository_impl.dart';
 
 class CustomForm extends StatelessWidget {
   CustomForm({

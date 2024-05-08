@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:site/app/features/contact/contact.dart';
 
-import 'package:site/data/repositories/contact/contact.dart';
-
-import '../../../utils/utils.dart';
+import '../../../../../utils/utils.dart';
 
 void main() {
   late MockHttpClient mockHttpClient;
