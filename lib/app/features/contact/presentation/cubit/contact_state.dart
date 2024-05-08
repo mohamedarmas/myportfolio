@@ -28,7 +28,7 @@ final class ContactSuccess extends ContactState {
     required this.message,
   });
 
-  final Contact contact;
+  final ContactModel contact;
   final String message;
 
   @override
@@ -41,7 +41,7 @@ final class ContactError extends ContactState {
     required this.message,
   });
 
-  final Contact contact;
+  final ContactModel contact;
   final String message;
 
   @override

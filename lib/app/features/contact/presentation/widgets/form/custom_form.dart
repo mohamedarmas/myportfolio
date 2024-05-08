@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:site/app/core/injections/injections.dart';
 import 'package:site/app/core/l10n/l10n.dart';
-import 'package:site/app/features/contact/domain/models/contact.dart';
-import 'package:site/app/features/contact/presentation/controller/contact_controller.dart';
-import 'package:site/app/features/contact/presentation/widgets/widgets.dart';
+import 'package:site/app/features/contact/contact.dart';
 import 'package:site/app/utils/contact_validators.dart';
 import 'package:site/app/widgets/buttons/buttons.dart';
 import 'package:site/app/widgets/dividers/dividers.dart';
-import 'package:site/app/features/contact/data/repositories/contact_repository_impl.dart';
 
 class CustomForm extends StatelessWidget {
   CustomForm({
@@ -83,7 +80,7 @@ class CustomForm extends StatelessWidget {
                 onPressed: onPressed,
                 onLongPress: () {
                   _contactController?.sendMail(
-                    contact: Contact(
+                    contact: ContactUser(
                       name: 'felipe sales',
                       email: 'soufeliposales@gmail.com',
                       message: 'teste de mensagem',

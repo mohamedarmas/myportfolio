@@ -52,7 +52,7 @@ class ContactWidget extends StatelessWidget {
             }
 
             _contactController?.sendMail(
-              contact: Contact(
+              contact: ContactUser(
                 name: nameController.text,
                 email: emailController.text.trim(),
                 message: messageController.text,

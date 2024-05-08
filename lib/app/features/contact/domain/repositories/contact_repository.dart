@@ -1,5 +1,8 @@
-import 'package:site/app/features/contact/domain/models/contact.dart';
+import 'package:site/app/core/result/result.dart';
+import 'package:site/app/features/contact/contact.dart';
 
 abstract class ContactRepository {
-  Future sendMail({required Contact contact});
+  Future<Result<ContactFailedResult, ContactAnswer>> sendMail({
+    required ContactModel contact,
+  });
 }

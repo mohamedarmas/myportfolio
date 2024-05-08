@@ -1,7 +1,7 @@
-import 'package:site/app/features/contact/domain/models/contact.dart';
+import 'package:site/app/features/contact/contact.dart';
 
 class AppFixtures {
-  final tContact = Contact(
+  final tContact = ContactUser(
     name: 'felipecastrosales',
     email: 'fakeemail@gmail.com',
     message: 'Hello, World!',

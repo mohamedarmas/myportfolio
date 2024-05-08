@@ -16,7 +16,7 @@ class ContactCubit extends Cubit<ContactState> {
   final ContactRepositoryImpl _contactRepository;
 
   Future<void> sendMail({
-    required Contact contact,
+    required ContactModel contact,
   }) async {
     emit(const ContactLoading());
 
