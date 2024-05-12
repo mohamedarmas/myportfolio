@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:site/app/core/shared/shared.dart';
 import 'package:site/app/features/contact/domain/models/contact_model.dart';
 
 class ContactAnswer extends ContactModel {
@@ -11,8 +12,8 @@ class ContactAnswer extends ContactModel {
       email: contact.email,
       message: contact.message,
       subject: contact.subject,
-      status: response.statusMessage ?? '',
-      response: '${response.statusCode}',
+      statusCode: response.statusCode ?? AppValues.invalidValue,
+      responseMessage: '${(response.data as Map<String, String>)['message']}',
     );
   }
 
@@ -21,10 +22,10 @@ class ContactAnswer extends ContactModel {
     required super.email,
     required super.message,
     required super.subject,
-    required this.status,
-    required this.response,
+    required this.statusCode,
+    required this.responseMessage,
   });
 
-  final String status;
-  final String response;
+  final int statusCode;
+  final String responseMessage;
 }

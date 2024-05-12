@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +43,8 @@ class ContactCubit extends Cubit<ContactState> {
                 ContactFailedResult.unauthorized => 'Unauthorized',
                 ContactFailedResult.tooManyRequests =>
                   'Too many requests, try again later',
-                ContactFailedResult.unknown => 'Error sending email',
+                ContactFailedResult.unknown => 'Unknown error',
+                ContactFailedResult.error => 'Error sending email',
               },
             ),
           );

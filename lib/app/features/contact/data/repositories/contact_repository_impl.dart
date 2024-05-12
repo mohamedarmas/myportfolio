@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:site/app/core/result/result.dart';
@@ -18,22 +19,33 @@ class ContactRepositoryImpl implements ContactRepository {
     required ContactModel contact,
   }) async {
     try {
-      final Response response = await _httpClient.post(
+      final response = await _httpClient.post(
         ConstantsAPI.apiSendMail,
         data: ContactUser.toJson(contact),
       );
 
-      return Success(
-        ContactAnswer.fromResponse(
-          contact: contact,
-          response: response,
-        ),
-      );
+      return switch (response.statusCode) {
+        HttpStatus.ok => Success(
+            ContactAnswer.fromResponse(
+              contact: contact,
+              response: response,
+            ),
+          ),
+        HttpStatus.unauthorized => const Failure(
+            ContactFailedResult.unauthorized,
+          ),
+        HttpStatus.tooManyRequests => const Failure(
+            ContactFailedResult.tooManyRequests,
+          ),
+        _ => const Failure(
+            ContactFailedResult.unknown,
+          ),
+      };
     } catch (e, s) {
       log('[Error]: ContactRepositoryImpl.sendMail', error: e, stackTrace: s);
 
       return const Failure(
-        ContactFailedResult.unknown,
+        ContactFailedResult.error,
       );
     }
   }
