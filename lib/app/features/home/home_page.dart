@@ -41,17 +41,18 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     items = [
-      Presentation(itemScrollController),
-      const Projects(),
-      const Experience(),
-      const Social(),
+      /// TODO:
       ContactWidget(
-        contactController: ContactController(
+        contactCubit: ContactCubit(
           contactRepository: ContactRepositoryImpl(
             httpClient: widget._httpClient,
           ),
         ),
       ),
+      Presentation(itemScrollController),
+      const Projects(),
+      const Experience(),
+      const Social(),
       const CustomFooter(),
     ];
   }

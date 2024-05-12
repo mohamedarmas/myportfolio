@@ -1,19 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:site/app/core/result/result.dart';
 import 'package:site/app/features/contact/contact.dart';
 
 part 'contact_state.dart';
 
 class ContactCubit extends Cubit<ContactState> {
   ContactCubit({
-    required ContactRepositoryImpl contactRepository,
+    required ContactRepository contactRepository,
   })  : _contactRepository = contactRepository,
         super(
           const ContactInitial(),
         );
 
-  final ContactRepositoryImpl _contactRepository;
+  final ContactRepository _contactRepository;
 
   Future<void> sendMail({
     required ContactModel contact,
@@ -21,16 +24,31 @@ class ContactCubit extends Cubit<ContactState> {
     emit(const ContactLoading());
 
     try {
-      await _contactRepository.sendMail(
-        contact: contact,
-      );
-      emit(
-        ContactSuccess(
-          contact: contact,
-          message: 'Email sent successfully',
-        ),
-      );
-    } catch (e) {
+      final result = await _contactRepository.sendMail(contact: contact);
+
+      switch (result) {
+        case Success(object: final contactAnswer):
+          emit(
+            ContactSuccess(
+              contact: contactAnswer,
+              message: 'Email sent successfully',
+            ),
+          );
+        case Failure(error: final contactFailedResult):
+          emit(
+            ContactError(
+              contact: contact,
+              message: switch (contactFailedResult) {
+                ContactFailedResult.unauthorized => 'Unauthorized',
+                ContactFailedResult.tooManyRequests =>
+                  'Too many requests, try again later',
+                ContactFailedResult.unknown => 'Error sending email',
+              },
+            ),
+          );
+      }
+    } catch (e, s) {
+      log('[Error]: ContactCubit.sendMail', error: e, stackTrace: s);
       emit(
         ContactError(
           contact: contact,
@@ -42,8 +60,8 @@ class ContactCubit extends Cubit<ContactState> {
 }
 
 
-// class ContactController extends ChangeNotifier {
-//   ContactController({
+// class ContactCubit extends ChangeNotifier {
+//   ContactCubit({
 //     ContactRepositoryImpl? contactRepository,
 //   }) : _contactRepository = contactRepository ?? getIt();
 

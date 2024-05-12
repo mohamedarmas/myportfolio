@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:site/app/core/l10n/localizations/localizations.dart';
 
 import 'package:site/app/core/tokens/tokens.dart';
+import 'package:site/app/features/contact/presentation/presentation.dart';
 
 ScaffoldFeatureController appShowSnackBar(
   BuildContext context, {
@@ -42,5 +44,30 @@ ScaffoldFeatureController appShowSnackBar(
         ],
       ),
     ),
+  );
+}
+
+ScaffoldFeatureController appShowSnackBarFromContact(
+  BuildContext context,
+  ContactState state,
+) {
+  return appShowSnackBar(
+    context,
+    width: 300,
+    text: switch (state) {
+      ContactSuccess() => AppTexts.get(context).emailSendedWithSuccess,
+      ContactError() => AppTexts.get(context).emailNotSended,
+      _ => '',
+    },
+    icon: switch (state) {
+      ContactSuccess() => Icons.check,
+      ContactError() => Icons.error,
+      _ => Icons.error,
+    },
+    color: switch (state) {
+      ContactSuccess() => AppColors.primaryDark,
+      ContactError() => AppColors.red,
+      _ => AppColors.red,
+    },
   );
 }

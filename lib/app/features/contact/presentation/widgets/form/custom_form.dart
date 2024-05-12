@@ -16,9 +16,9 @@ class CustomForm extends StatelessWidget {
     required this.subjectController,
     required this.messageController,
     required this.onPressed,
-    ContactController? contactController,
-  }) : _contactController = contactController ??
-            ContactController(
+    ContactCubit? contactCubit,
+  }) : _contactCubit = contactCubit ??
+            ContactCubit(
               contactRepository: ContactRepositoryImpl(
                 httpClient: getIt(),
               ),
@@ -30,8 +30,7 @@ class CustomForm extends StatelessWidget {
   final TextEditingController subjectController;
   final TextEditingController messageController;
   final VoidCallback onPressed;
-
-  final ContactController? _contactController;
+  final ContactCubit? _contactCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +76,21 @@ class CustomForm extends StatelessWidget {
             Center(
               child: AppTextButton(
                 text: AppTexts.get(context).sendEmailUpper,
-                onPressed: onPressed,
+
+                /// TODO:
+                // onPressed: onPressed,
+                onPressed: () {
+                  _contactCubit?.sendMail(
+                    contact: ContactUser(
+                      name: 'felipe sales',
+                      email: 'soufeliposales@gmail.com',
+                      message: 'teste de mensagem',
+                      subject: 'vamos testar, mais uma vez',
+                    ),
+                  );
+                },
                 onLongPress: () {
-                  _contactController?.sendMail(
+                  _contactCubit?.sendMail(
                     contact: ContactUser(
                       name: 'felipe sales',
                       email: 'soufeliposales@gmail.com',

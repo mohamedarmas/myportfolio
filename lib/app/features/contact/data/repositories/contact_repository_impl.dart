@@ -18,17 +18,23 @@ class ContactRepositoryImpl implements ContactRepository {
     required ContactModel contact,
   }) async {
     try {
-      final response = await _httpClient.post(
+      final Response response = await _httpClient.post(
         ConstantsAPI.apiSendMail,
         data: ContactUser.toJson(contact),
       );
 
-      // return response.data;
-      return Success(ContactAnswer.fromJson(response.data));
+      return Success(
+        ContactAnswer.fromResponse(
+          contact: contact,
+          response: response,
+        ),
+      );
     } catch (e, s) {
-      log('Error: $e', stackTrace: s);
+      log('[Error]: ContactRepositoryImpl.sendMail', error: e, stackTrace: s);
 
-      return const Failure(ContactFailedResult.unknown);
+      return const Failure(
+        ContactFailedResult.unknown,
+      );
     }
   }
 }

@@ -1,2 +1,2 @@
-export 'controller/controller.dart';
 export 'widgets/widgets.dart';
+export 'cubit/contact_cubit.dart';
