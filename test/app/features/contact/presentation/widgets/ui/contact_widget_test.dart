@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:site/app/features/contact/presentation/widgets/ui/contact_mobile.dart';
-import 'package:site/app/features/contact/presentation/widgets/ui/contact_web.dart';
-import 'package:site/app/features/contact/presentation/widgets/ui/contact_widget.dart';
-import 'package:site/app/features/contact/presentation/controller/contact_controller.dart';
+import 'package:site/app/features/contact/contact.dart';
 
 import '../../../../../../flutter_test_config.dart';
 import '../../../../../../utils/utils.dart';
 
 void main() {
-  late ContactController contactController;
+  late ContactCubit contactCubit;
 
   setUp(() {
-    contactController = MockContactController();
+    contactCubit = MockContactCubit();
   });
 
   testWidgets('Should renders Contact', (tester) async {
     await appWidgetTest(
       tester: tester,
       widget: ContactWidget(
-        contactController: contactController,
+        contactCubit: contactCubit,
       ),
     );
 
@@ -36,46 +32,38 @@ void main() {
     testWidgets(
       'ContactMobile when constraints is less than Breakpoints.contact',
       (tester) async {
-        final widthLargeSize =
-            tester.binding.window.physicalSizeTestValue = const Size(200, 400);
+        tester.view.physicalSize = const Size(200, 400);
 
         await appWidgetTest(
           tester: tester,
-          widget: MediaQuery(
-            data: MediaQueryData(size: widthLargeSize),
-            child: ContactWidget(
-              contactController: contactController,
-            ),
+          widget: ContactWidget(
+            contactCubit: contactCubit,
           ),
         );
 
         expect(contactMobile, findsOneWidget);
         expect(contactWeb, findsNothing);
 
-        addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+        addTearDown(tester.view.resetPhysicalSize);
       },
     );
 
     testWidgets(
       'ContactWeb when constraints is greater than Breakpoints.contact',
       (tester) async {
-        final widthLargeSize =
-            tester.binding.window.physicalSizeTestValue = const Size(2000, 400);
+        tester.view.physicalSize = const Size(2000, 400);
 
         await appWidgetTest(
           tester: tester,
-          widget: MediaQuery(
-            data: MediaQueryData(size: widthLargeSize),
-            child: ContactWidget(
-              contactController: contactController,
-            ),
+          widget: ContactWidget(
+            contactCubit: contactCubit,
           ),
         );
 
         expect(contactMobile, findsNothing);
         expect(contactWeb, findsOneWidget);
 
-        addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+        addTearDown(tester.view.resetPhysicalSize);
       },
     );
   });
