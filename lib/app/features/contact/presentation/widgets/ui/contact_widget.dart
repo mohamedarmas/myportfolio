@@ -36,6 +36,17 @@ class ContactWidget extends StatelessWidget {
           if ([ContactSuccess, ContactError].contains(state.runtimeType)) {
             appShowSnackBarFromContact(context, state);
           }
+
+          if (state is ContactSuccess) {
+            for (var controller in [
+              nameController,
+              emailController,
+              messageController,
+              subjectController,
+            ]) {
+              controller.clear();
+            }
+          }
         },
         builder: (context, state) {
           return CustomForm(
@@ -54,15 +65,6 @@ class ContactWidget extends StatelessWidget {
                     message: messageController.text,
                   ),
                 );
-
-                for (var controller in [
-                  nameController,
-                  emailController,
-                  messageController,
-                  subjectController,
-                ]) {
-                  controller.clear();
-                }
               }
             },
           );
