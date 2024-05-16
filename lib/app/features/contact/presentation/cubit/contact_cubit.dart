@@ -1,9 +1,10 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:site/app/core/globals/navigation_service.dart';
+import 'package:site/app/core/l10n/l10n.dart';
 import 'package:site/app/core/result/result.dart';
 import 'package:site/app/features/contact/contact.dart';
 
@@ -32,20 +33,15 @@ class ContactCubit extends Cubit<ContactState> {
           emit(
             ContactSuccess(
               contact: contactAnswer,
-              message: 'Email sent successfully',
+              message: AppTexts.get(NavigationService.navigatorKeyContext)
+                  .emailSendedWithSuccess,
             ),
           );
         case Failure(error: final contactFailedResult):
           emit(
             ContactError(
               contact: contact,
-              message: switch (contactFailedResult) {
-                ContactFailedResult.unauthorized => 'Unauthorized',
-                ContactFailedResult.tooManyRequests =>
-                  'Too many requests, try again later',
-                ContactFailedResult.unknown => 'Unknown error',
-                ContactFailedResult.error => 'Error sending email',
-              },
+              message: contactFailedResult.message,
             ),
           );
       }
