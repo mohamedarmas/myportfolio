@@ -26,7 +26,7 @@ class WebAppBarTitle extends StatelessWidget with ScrollToMixin {
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           splashColor: AppColors.primary,
-          overlayColor: MaterialStateProperty.all(
+          overlayColor: WidgetStateProperty.all(
             AppColors.primary.withOpacity(0.25),
           ),
           onTap: () => scrollTo(index, itemScrollController),
