@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:site/app/core/l10n/localizations/localizations.dart';
+import 'package:flutter/material.dart';
 
 import 'package:site/app/core/tokens/tokens.dart';
 import 'package:site/app/features/contact/presentation/presentation.dart';
@@ -55,8 +53,8 @@ ScaffoldFeatureController appShowSnackBarFromContact(
     context,
     width: 300,
     text: switch (state) {
-      ContactSuccess() => AppTexts.get(context).emailSendedWithSuccess,
-      ContactError() => AppTexts.get(context).emailNotSended,
+      ContactSuccess() => state.message,
+      ContactError() => state.message,
       _ => '',
     },
     icon: switch (state) {

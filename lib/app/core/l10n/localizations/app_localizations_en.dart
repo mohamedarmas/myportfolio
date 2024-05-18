@@ -125,6 +125,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailNotSended => 'Error to send email';
 
   @override
+  String get emailTooManyRequests => 'Please try again later!';
+
+  @override
+  String get emailUnauthorized => 'Sending was not authorized!';
+
+  @override
+  String get emailUnknowError => 'Try sending in another way!';
+
+  @override
   String get letsChatCallMe => 'Let\'s chat, call me:';
 
   @override

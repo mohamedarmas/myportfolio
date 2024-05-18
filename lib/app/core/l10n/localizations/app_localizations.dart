@@ -335,6 +335,24 @@ abstract class AppLocalizations {
   /// **'Erro ao enviar e-mail!'**
   String get emailNotSended;
 
+  /// No description provided for @emailTooManyRequests.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tente novamente mais tarde!'**
+  String get emailTooManyRequests;
+
+  /// No description provided for @emailUnauthorized.
+  ///
+  /// In pt, this message translates to:
+  /// **'O envio não foi autorizado!'**
+  String get emailUnauthorized;
+
+  /// No description provided for @emailUnknowError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tente enviar de outra forma!'**
+  String get emailUnknowError;
+
   /// No description provided for @letsChatCallMe.
   ///
   /// In pt, this message translates to:

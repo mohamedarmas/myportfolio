@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:site/app/core/globals/navigation_service.dart';
 import 'package:site/app/core/l10n/l10n.dart';
 import 'package:site/app/core/result/result.dart';
 import 'package:site/app/features/contact/contact.dart';
@@ -33,8 +32,7 @@ class ContactCubit extends Cubit<ContactState> {
           emit(
             ContactSuccess(
               contact: contactAnswer,
-              message: AppTexts.get(NavigationService.navigatorKeyContext)
-                  .emailSendedWithSuccess,
+              message: AppTexts.getViaNavigatorKey.emailSendedWithSuccess,
             ),
           );
         case Failure(error: final contactFailedResult):
