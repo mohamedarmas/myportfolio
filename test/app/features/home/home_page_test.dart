@@ -11,11 +11,9 @@ import '../../../utils/utils.dart';
 
 void main() {
   late MockFirebaseRemoteConfig mockFirebaseRemoteConfig;
-  late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockFirebaseRemoteConfig = MockFirebaseRemoteConfig();
-    mockHttpClient = MockHttpClient();
   });
 
   testWidgets('Should renders HomePage', (tester) async {
@@ -23,7 +21,6 @@ void main() {
       tester: tester,
       widget: HomePage(
         firebaseRemoteConfig: mockFirebaseRemoteConfig,
-        httpClient: mockHttpClient,
       ),
     );
 
@@ -60,7 +57,6 @@ void main() {
         tester: tester,
         widget: HomePage(
           firebaseRemoteConfig: mockFirebaseRemoteConfig,
-          httpClient: mockHttpClient,
         ),
       );
 
@@ -74,7 +70,6 @@ void main() {
         tester: tester,
         widget: HomePage(
           firebaseRemoteConfig: mockFirebaseRemoteConfig,
-          httpClient: mockHttpClient,
         ),
       );
 

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -18,14 +17,11 @@ class HomePage extends StatefulWidget {
   HomePage({
     super.key,
     FirebaseRemoteConfig? firebaseRemoteConfig,
-    Dio? httpClient,
-  })  : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt(),
-        _httpClient = httpClient ?? getIt();
+  }) : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt();
 
   /// The [FirebaseRemoteConfig] instance is here to be used for future updates and configurations.
   // ignore: unused_field
   final FirebaseRemoteConfig _firebaseRemoteConfig;
-  final Dio _httpClient;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -41,13 +37,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     items = [
-      /// TODO:
       ContactWidget(
-        contactCubit: ContactCubit(
-          contactRepository: ContactRepositoryImpl(
-            httpClient: widget._httpClient,
-          ),
-        ),
+        contactCubit: getIt<ContactCubit>(),
       ),
       Presentation(itemScrollController),
       const Projects(),

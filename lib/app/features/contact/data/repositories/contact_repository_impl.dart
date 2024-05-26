@@ -24,29 +24,30 @@ class ContactRepositoryImpl implements ContactRepository {
         data: ContactUser.toJson(contact),
       );
 
-      return switch (response.statusCode) {
-        HttpStatus.ok => Success(
-            ContactAnswer.fromResponse(
-              contact: contact,
-              response: response,
-            ),
+      if (response.statusCode == HttpStatus.ok) {
+        return Success(
+          ContactAnswer.fromResponse(
+            contact: contact,
+            response: response,
           ),
-        HttpStatus.unauthorized => const Failure(
-            ContactFailedResult.unauthorized,
-          ),
-        HttpStatus.tooManyRequests => const Failure(
-            ContactFailedResult.tooManyRequests,
-          ),
-        _ => const Failure(
-            ContactFailedResult.unknown,
-          ),
+        );
+      }
+
+      return const Failure(ContactFailedResult.unknown);
+    } on DioException catch (e, s) {
+      log('[Error]: DioException - ContactRepositoryImpl.sendMail', error: e, stackTrace: s);
+
+      return switch (e.response?.statusCode) {
+        HttpStatus.unauthorized =>
+          const Failure(ContactFailedResult.unauthorized),
+        HttpStatus.tooManyRequests =>
+          const Failure(ContactFailedResult.tooManyRequests),
+        _ => const Failure(ContactFailedResult.unknown),
       };
     } catch (e, s) {
       log('[Error]: ContactRepositoryImpl.sendMail', error: e, stackTrace: s);
 
-      return const Failure(
-        ContactFailedResult.error,
-      );
+      return const Failure(ContactFailedResult.error);
     }
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -24,50 +22,23 @@ class ContactCubit extends Cubit<ContactState> {
   }) async {
     emit(const ContactLoading());
 
-    try {
-      final result = await _contactRepository.sendMail(contact: contact);
+    final result = await _contactRepository.sendMail(contact: contact);
 
-      switch (result) {
-        case Success(object: final contactAnswer):
-          emit(
-            ContactSuccess(
-              contact: contactAnswer,
-              message: AppTexts.getViaNavigatorKey.emailSendedWithSuccess,
-            ),
-          );
-        case Failure(error: final contactFailedResult):
-          emit(
-            ContactError(
-              contact: contact,
-              message: contactFailedResult.message,
-            ),
-          );
-      }
-    } catch (e, s) {
-      log('[Error]: ContactCubit.sendMail', error: e, stackTrace: s);
-      emit(
-        ContactError(
-          contact: contact,
-          message: 'Error sending email',
-        ),
-      );
+    switch (result) {
+      case Success(object: final contactAnswer):
+        emit(
+          ContactSuccess(
+            contact: contactAnswer,
+            message: AppTexts.getViaNavigatorKey.emailSendedWithSuccess,
+          ),
+        );
+      case Failure(error: final contactFailedResult):
+        emit(
+          ContactError(
+            contact: contact,
+            message: contactFailedResult.message,
+          ),
+        );
     }
   }
 }
-
-
-// class ContactCubit extends ChangeNotifier {
-//   ContactCubit({
-//     ContactRepositoryImpl? contactRepository,
-//   }) : _contactRepository = contactRepository ?? getIt();
-
-//   final ContactRepositoryImpl _contactRepository;
-
-//   Future<void> sendMail({
-//     required Contact contact,
-//   }) {
-//     return _contactRepository.sendMail(
-//       contact: contact,
-//     );
-//   }
-// }

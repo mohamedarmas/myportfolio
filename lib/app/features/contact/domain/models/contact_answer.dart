@@ -13,7 +13,7 @@ class ContactAnswer extends ContactModel {
       message: contact.message,
       subject: contact.subject,
       statusCode: response.statusCode ?? AppValues.invalidValue,
-      responseMessage: '${(response.data as Map<String, String>)['message']}',
+      responseMessage: '${(response.data as Map<String, dynamic>)['message']}',
     );
   }
 

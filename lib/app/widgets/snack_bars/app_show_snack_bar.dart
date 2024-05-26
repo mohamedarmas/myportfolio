@@ -63,9 +63,9 @@ ScaffoldFeatureController appShowSnackBarFromContact(
       _ => Icons.error,
     },
     color: switch (state) {
-      ContactSuccess() => AppColors.primaryDark,
+      ContactSuccess() => AppColors.green,
       ContactError() => AppColors.red,
-      _ => AppColors.red,
+      _ => AppColors.primaryDark,
     },
   );
 }

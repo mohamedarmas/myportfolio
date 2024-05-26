@@ -12,12 +12,9 @@ class AppWidget extends StatelessWidget {
   AppWidget({
     super.key,
     FirebaseRemoteConfig? firebaseRemoteConfig,
-    Dio? httpClient,
-  })  : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt(),
-        _httpClient = httpClient ?? getIt();
+  }) : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt();
 
   final FirebaseRemoteConfig _firebaseRemoteConfig;
-  final Dio _httpClient;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,6 @@ class AppWidget extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       home: HomePage(
         firebaseRemoteConfig: _firebaseRemoteConfig,
-        httpClient: _httpClient,
       ),
     );
   }

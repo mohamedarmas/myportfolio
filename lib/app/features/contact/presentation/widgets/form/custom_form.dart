@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:site/app/core/injections/injections.dart';
 import 'package:site/app/core/l10n/l10n.dart';
 import 'package:site/app/features/contact/contact.dart';
 import 'package:site/app/utils/contact_validators.dart';
@@ -8,7 +7,7 @@ import 'package:site/app/widgets/buttons/buttons.dart';
 import 'package:site/app/widgets/dividers/dividers.dart';
 
 class CustomForm extends StatelessWidget {
-  CustomForm({
+  const CustomForm({
     super.key,
     required this.formKey,
     required this.nameController,
@@ -16,13 +15,7 @@ class CustomForm extends StatelessWidget {
     required this.subjectController,
     required this.messageController,
     required this.onPressed,
-    ContactCubit? contactCubit,
-  }) : _contactCubit = contactCubit ??
-            ContactCubit(
-              contactRepository: ContactRepositoryImpl(
-                httpClient: getIt(),
-              ),
-            );
+  });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController nameController;
@@ -30,7 +23,6 @@ class CustomForm extends StatelessWidget {
   final TextEditingController subjectController;
   final TextEditingController messageController;
   final VoidCallback onPressed;
-  final ContactCubit? _contactCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -76,29 +68,7 @@ class CustomForm extends StatelessWidget {
             Center(
               child: AppTextButton(
                 text: AppTexts.get(context).sendEmailUpper,
-
-                /// TODO:
-                // onPressed: onPressed,
-                onPressed: () {
-                  _contactCubit?.sendMail(
-                    contact: ContactUser(
-                      name: 'felipe sales',
-                      email: 'soufeliposales@gmail.com',
-                      message: 'teste de mensagem',
-                      subject: 'vamos testar, mais uma vez',
-                    ),
-                  );
-                },
-                onLongPress: () {
-                  _contactCubit?.sendMail(
-                    contact: ContactUser(
-                      name: 'felipe sales',
-                      email: 'soufeliposales@gmail.com',
-                      message: 'teste de mensagem',
-                      subject: 'vamos testar, mais uma vez',
-                    ),
-                  );
-                },
+                onPressed: onPressed,
               ),
             ),
             const SizedBox(height: 60),
