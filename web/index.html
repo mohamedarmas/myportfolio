@@ -76,12 +76,12 @@
   </script>
 
   <script>
-    var serviceWorkerVersion = null;
+    var flutter_service_worker_version = null;
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
+      _flutter.loader.load({
         serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
+          flutter_service_worker_version: flutter_service_worker_version,
         },
         onEntrypointLoaded: async function(engineInitializer) {
           let config = {
