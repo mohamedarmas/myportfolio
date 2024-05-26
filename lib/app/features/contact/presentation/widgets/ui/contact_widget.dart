@@ -31,7 +31,7 @@ class ContactWidget extends StatelessWidget {
 
     final form = BlocProvider(
       create: (context) => _contactCubit ?? _cubit,
-      child: BlocConsumer<ContactCubit, ContactState>(
+      child: BlocListener<ContactCubit, ContactState>(
         listener: (context, state) {
           if ([ContactSuccess, ContactError].contains(state.runtimeType)) {
             appShowSnackBarFromContact(context, state);
@@ -48,27 +48,25 @@ class ContactWidget extends StatelessWidget {
             }
           }
         },
-        builder: (context, state) {
-          return CustomForm(
-            formKey: formKey,
-            nameController: nameController,
-            emailController: emailController,
-            subjectController: subjectController,
-            messageController: messageController,
-            onPressed: () {
-              if (formKey.currentState?.validate() ?? false) {
-                _contactCubit?.sendMail(
-                  contact: ContactUser(
-                    name: nameController.text,
-                    email: emailController.text,
-                    subject: subjectController.text,
-                    message: messageController.text,
-                  ),
-                );
-              }
-            },
-          );
-        },
+        child: CustomForm(
+          formKey: formKey,
+          nameController: nameController,
+          emailController: emailController,
+          subjectController: subjectController,
+          messageController: messageController,
+          onPressed: () {
+            if (formKey.currentState?.validate() ?? false) {
+              _contactCubit?.sendMail(
+                contact: ContactUser(
+                  name: nameController.text,
+                  email: emailController.text,
+                  subject: subjectController.text,
+                  message: messageController.text,
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
 
