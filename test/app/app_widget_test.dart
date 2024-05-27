@@ -7,9 +7,11 @@ import '../utils/utils.dart';
 
 void main() {
   late MockFirebaseRemoteConfig mockFirebaseRemoteConfig;
+  late MockContactCubit mockContactCubit;
 
   setUp(() {
     mockFirebaseRemoteConfig = MockFirebaseRemoteConfig();
+    mockContactCubit = MockContactCubit();
   });
 
   testWidgets('Should renders AppWidget', (tester) async {
@@ -17,6 +19,7 @@ void main() {
       tester: tester,
       widget: AppWidget(
         firebaseRemoteConfig: mockFirebaseRemoteConfig,
+        contactCubit: mockContactCubit,
       ),
     );
 

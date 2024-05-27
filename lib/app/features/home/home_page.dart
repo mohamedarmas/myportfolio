@@ -17,11 +17,14 @@ class HomePage extends StatefulWidget {
   HomePage({
     super.key,
     FirebaseRemoteConfig? firebaseRemoteConfig,
-  }) : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt();
+    ContactCubit? contactCubit,
+  })  : _firebaseRemoteConfig = firebaseRemoteConfig ?? getIt(),
+        _contactCubit = contactCubit;
 
   /// The [FirebaseRemoteConfig] instance is here to be used for future updates and configurations.
   // ignore: unused_field
   final FirebaseRemoteConfig _firebaseRemoteConfig;
+  final ContactCubit? _contactCubit;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,13 +40,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     items = [
-      ContactWidget(
-        contactCubit: getIt<ContactCubit>(),
-      ),
       Presentation(itemScrollController),
       const Projects(),
       const Experience(),
       const Social(),
+      ContactWidget(
+        contactCubit: widget._contactCubit ?? getIt(),
+      ),
       const CustomFooter(),
     ];
   }

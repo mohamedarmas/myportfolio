@@ -11,9 +11,11 @@ import '../../../utils/utils.dart';
 
 void main() {
   late MockFirebaseRemoteConfig mockFirebaseRemoteConfig;
+  late MockContactCubit mockContactCubit;
 
   setUp(() {
     mockFirebaseRemoteConfig = MockFirebaseRemoteConfig();
+    mockContactCubit = MockContactCubit();
   });
 
   testWidgets('Should renders HomePage', (tester) async {
@@ -21,6 +23,7 @@ void main() {
       tester: tester,
       widget: HomePage(
         firebaseRemoteConfig: mockFirebaseRemoteConfig,
+        contactCubit: mockContactCubit,
       ),
     );
 
@@ -57,6 +60,7 @@ void main() {
         tester: tester,
         widget: HomePage(
           firebaseRemoteConfig: mockFirebaseRemoteConfig,
+          contactCubit: mockContactCubit,
         ),
       );
 
@@ -70,6 +74,7 @@ void main() {
         tester: tester,
         widget: HomePage(
           firebaseRemoteConfig: mockFirebaseRemoteConfig,
+          contactCubit: mockContactCubit,
         ),
       );
 
