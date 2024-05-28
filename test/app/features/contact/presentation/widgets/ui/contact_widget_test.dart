@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:site/app/features/contact/contact.dart';
 
 import '../../../../../../flutter_test_config.dart';
@@ -11,6 +12,12 @@ void main() {
 
   setUp(() {
     contactCubit = MockContactCubit();
+
+    when(() => contactCubit.stream).thenAnswer(
+      (_) => Stream.value(const ContactInitial()),
+    );
+
+    when(() => contactCubit.state).thenReturn(const ContactInitial());
   });
 
   testWidgets('Should renders Contact', (tester) async {
