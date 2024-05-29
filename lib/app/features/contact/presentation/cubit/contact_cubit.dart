@@ -10,12 +10,15 @@ part 'contact_state.dart';
 class ContactCubit extends Cubit<ContactState> {
   ContactCubit({
     required ContactRepository contactRepository,
+    AppLocalizations? appLocalizations,
   })  : _contactRepository = contactRepository,
+        _appLocalizations = appLocalizations ?? AppTexts.getViaNavigatorKey,
         super(
           const ContactInitial(),
         );
 
   final ContactRepository _contactRepository;
+  final AppLocalizations _appLocalizations;
 
   Future<void> sendMail({
     required ContactModel contact,
@@ -29,14 +32,14 @@ class ContactCubit extends Cubit<ContactState> {
         emit(
           ContactSuccess(
             contact: contactAnswer,
-            message: AppTexts.getViaNavigatorKey.emailSendedWithSuccess,
+            message: _appLocalizations.emailSendedWithSuccess,
           ),
         );
       case Failure(error: final contactFailedResult):
         emit(
           ContactError(
             contact: contact,
-            message: contactFailedResult.message,
+            message: contactFailedResult.message(_appLocalizations),
           ),
         );
     }

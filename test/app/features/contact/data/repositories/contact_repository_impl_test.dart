@@ -41,7 +41,15 @@ void main() {
     );
 
     await contactRepository.sendMail(
-      contact: AppFixtures().tContact,
+      contact: AppFixtures().tContactUser,
     );
+
+    verify(
+      () => mockHttpClient.post(
+        any(),
+        data: any(named: 'data'),
+        options: any(named: 'options'),
+      ),
+    ).called(1);
   });
 }

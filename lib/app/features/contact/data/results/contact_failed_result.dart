@@ -6,9 +6,7 @@ enum ContactFailedResult {
   unknown,
   error;
 
-  String get message {
-    final texts = AppTexts.getViaNavigatorKey;
-
+  String message(AppLocalizations texts) {
     return switch (this) {
       ContactFailedResult.tooManyRequests => texts.emailTooManyRequests,
       ContactFailedResult.unauthorized => texts.emailUnauthorized,
