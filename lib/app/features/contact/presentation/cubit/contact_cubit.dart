@@ -12,13 +12,13 @@ class ContactCubit extends Cubit<ContactState> {
     required ContactRepository contactRepository,
     AppLocalizations? appLocalizations,
   })  : _contactRepository = contactRepository,
-        _appLocalizations = appLocalizations ?? AppTexts.getViaNavigatorKey,
+        _appLocalizations = appLocalizations,
         super(
           const ContactInitial(),
         );
 
   final ContactRepository _contactRepository;
-  final AppLocalizations _appLocalizations;
+  final AppLocalizations? _appLocalizations;
 
   Future<void> sendMail({
     required ContactModel contact,
@@ -32,14 +32,16 @@ class ContactCubit extends Cubit<ContactState> {
         emit(
           ContactSuccess(
             contact: contactAnswer,
-            message: _appLocalizations.emailSendedWithSuccess,
+            message: (_appLocalizations ?? AppTexts.getViaNavigatorKey)
+                .emailSendedWithSuccess,
           ),
         );
       case Failure(error: final contactFailedResult):
         emit(
           ContactError(
             contact: contact,
-            message: contactFailedResult.message(_appLocalizations),
+            message: contactFailedResult
+                .message(_appLocalizations ?? AppTexts.getViaNavigatorKey),
           ),
         );
     }
