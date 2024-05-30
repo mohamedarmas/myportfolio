@@ -65,7 +65,10 @@ void main() {
       act: (cubit) => cubit.sendMail(contact: contact),
       expect: () => [
         const ContactLoading(),
-        ContactError(contact: contact, message: 'Email unknown error'),
+        ContactError(
+          contact: contact,
+          message: MockAppLocalizationsHelper.emailUnknowError,
+        ),
       ],
     );
   });

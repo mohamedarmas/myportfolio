@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:equatable/equatable.dart';
 
-class RecaptchaResponse {
-  RecaptchaResponse({
+class RecaptchaResponse extends Equatable {
+  const RecaptchaResponse({
     required this.success,
     required this.challengeTimeStamp,
     required this.hostName,
@@ -70,25 +70,12 @@ class RecaptchaResponse {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is RecaptchaResponse &&
-        other.success == success &&
-        other.challengeTimeStamp == challengeTimeStamp &&
-        other.hostName == hostName &&
-        other.score == score &&
-        other.action == action &&
-        listEquals(other.errorCodes, errorCodes);
-  }
-
-  @override
-  int get hashCode {
-    return success.hashCode ^
-        challengeTimeStamp.hashCode ^
-        hostName.hashCode ^
-        score.hashCode ^
-        action.hashCode ^
-        errorCodes.hashCode;
-  }
+  List<Object> get props => [
+        success,
+        challengeTimeStamp,
+        hostName,
+        score,
+        action,
+        errorCodes,
+      ];
 }

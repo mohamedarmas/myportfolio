@@ -7,7 +7,7 @@ analyzer:
     # - lib/generated_plugin_registrant.dart
     # - test/**
     - lib/app/core/l10n/localizations/** # Generated file
-#     - lib/data/services/firebase/firebase_set_defaults.dart # To use dynamic type (because really need it)
+    # - lib/data/services/firebase/firebase_set_defaults.dart # To use dynamic type (because really need it)
 
 linter:
   rules:

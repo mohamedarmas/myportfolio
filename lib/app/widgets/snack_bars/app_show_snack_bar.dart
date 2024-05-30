@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:site/app/core/tokens/tokens.dart';
-import 'package:site/app/features/contact/presentation/presentation.dart';
+import 'package:site/app/features/contact/contact.dart';
 
 ScaffoldFeatureController appShowSnackBar(
   BuildContext context, {
@@ -60,7 +60,7 @@ ScaffoldFeatureController appShowSnackBarFromContact(
     icon: switch (state) {
       ContactSuccess() => Icons.check,
       ContactError() => Icons.error,
-      _ => Icons.error,
+      _ => Icons.info,
     },
     color: switch (state) {
       ContactSuccess() => AppColors.green,
