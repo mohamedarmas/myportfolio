@@ -17,14 +17,17 @@ class SingleChildScrollViewWithoutScroll extends StatelessWidget {
   const SingleChildScrollViewWithoutScroll({
     super.key,
     required this.child,
+    this.primary,
   });
 
   final Widget child;
+  final bool? primary;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
+      primary: primary,
       child: child,
     );
   }

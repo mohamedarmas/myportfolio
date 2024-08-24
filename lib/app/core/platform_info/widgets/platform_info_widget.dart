@@ -30,18 +30,11 @@ class _PlatformInfoWidgetState extends State<PlatformInfoWidget> {
     return FutureBuilder<PackageInfo>(
       future: packageInfo,
       builder: (context, snapshot) {
-        if ([
-          ConnectionState.none,
-          ConnectionState.active,
-          ConnectionState.waiting,
-        ].contains(snapshot.connectionState)) {
-          return const CircularProgressIndicator();
-        }
-
         if (snapshot.hasData && snapshot.data != null) {
           final data = snapshot.data!;
+          final buildNumber = data.buildNumber;
           final text =
-              'v${data.version}${data.buildNumber.isEmpty ? '' : '+${data.buildNumber}'}';
+              'v${data.version}${buildNumber.isEmpty ? '' : '+$buildNumber'}';
 
           return Padding(
             padding: padding,
