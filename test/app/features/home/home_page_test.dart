@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:site/app/core/responsive/responsive.dart';
 
+import 'package:site/app/core/responsive/responsive.dart';
 import 'package:site/app/features/home/home_page.dart';
 import 'package:site/app/widgets/drawer/drawer.dart';
 
@@ -12,11 +11,11 @@ import '../../../utils/utils.dart';
 
 void main() {
   late MockFirebaseRemoteConfig mockFirebaseRemoteConfig;
-  late MockHttpClient mockHttpClient;
+  late MockContactCubit mockContactCubit;
 
   setUp(() {
     mockFirebaseRemoteConfig = MockFirebaseRemoteConfig();
-    mockHttpClient = MockHttpClient();
+    mockContactCubit = MockContactCubit();
   });
 
   testWidgets('Should renders HomePage', (tester) async {
@@ -24,7 +23,7 @@ void main() {
       tester: tester,
       widget: HomePage(
         firebaseRemoteConfig: mockFirebaseRemoteConfig,
-        httpClient: mockHttpClient,
+        contactCubit: mockContactCubit,
       ),
     );
 
@@ -55,23 +54,19 @@ void main() {
     );
 
     testWidgets('Find CustomDrawer when is to show', (tester) async {
-      final isToShowDrawerWidth = tester.binding.window.physicalSizeTestValue =
-          Size(Breakpoints.appBar.toDouble(), 400);
+      tester.view.physicalSize = Size(Breakpoints.appBar.toDouble(), 400);
 
       await appWidgetTest(
         tester: tester,
-        widget: MediaQuery(
-          data: MediaQueryData(size: isToShowDrawerWidth),
-          child: HomePage(
-            firebaseRemoteConfig: mockFirebaseRemoteConfig,
-            httpClient: mockHttpClient,
-          ),
+        widget: HomePage(
+          firebaseRemoteConfig: mockFirebaseRemoteConfig,
+          contactCubit: mockContactCubit,
         ),
       );
 
       expect(findDrawer, findsOneWidget);
 
-      addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+      addTearDown(tester.view.resetPhysicalSize);
     });
 
     testWidgets('Not find Drawer when is not to show', (tester) async {
@@ -79,13 +74,13 @@ void main() {
         tester: tester,
         widget: HomePage(
           firebaseRemoteConfig: mockFirebaseRemoteConfig,
-          httpClient: mockHttpClient,
+          contactCubit: mockContactCubit,
         ),
       );
 
       expect(findDrawer, findsNothing);
 
-      addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+      addTearDown(tester.view.resetPhysicalSize);
     });
   });
 }

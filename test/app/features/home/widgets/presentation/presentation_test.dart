@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -28,42 +27,34 @@ void main() {
       testWidgets(
         'PresentationMobile when constraints is less than Breakpoints.presentation',
         (tester) async {
-          final widthSmallSize = tester.binding.window.physicalSizeTestValue =
-              const Size(400, 400);
+          tester.view.physicalSize = const Size(400, 400);
 
           await appWidgetTest(
             tester: tester,
-            widget: MediaQuery(
-              data: MediaQueryData(size: widthSmallSize),
-              child: Presentation(ItemScrollController()),
-            ),
+            widget: Presentation(ItemScrollController()),
           );
 
           expect(presentationMobile, findsOneWidget);
           expect(presentationWeb, findsNothing);
 
-          addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+          addTearDown(tester.view.resetPhysicalSize);
         },
       );
 
       testWidgets(
         'PresentationWeb when constraints is greater than Breakpoints.presentation',
         (tester) async {
-          final widthLargeSize = tester.binding.window.physicalSizeTestValue =
-              const Size(2000, 1000);
+          tester.view.physicalSize = const Size(2000, 1000);
 
           await appWidgetTest(
             tester: tester,
-            widget: MediaQuery(
-              data: MediaQueryData(size: widthLargeSize),
-              child: Presentation(ItemScrollController()),
-            ),
+            widget: Presentation(ItemScrollController()),
           );
 
           expect(presentationMobile, findsNothing);
           expect(presentationWeb, findsOneWidget);
 
-          addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+          addTearDown(tester.view.resetPhysicalSize);
         },
       );
     });

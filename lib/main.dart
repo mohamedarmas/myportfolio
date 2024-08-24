@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'package:site/app/app_widget.dart';
@@ -9,6 +10,11 @@ import 'package:site/data/services/firebase/firebase.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FirebaseServiceImpl().setUpInitialization();
+
+  // if (kIsWeb) {
+  //   await RecaptchaService.initiate();
+  // }
+
   setPathUrlStrategy();
   configureDependencies();
   runApp(

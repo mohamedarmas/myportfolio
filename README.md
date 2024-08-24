@@ -28,7 +28,7 @@
 
 With a single codebase, you can access this example from mobile, web and even desktop.
 
-I'm sure this will be one of the best examples of the Flutter Web project in a completely open-source way and with the amout of features that exist.
+I'm sure this will be one of the best examples of the Flutter Web project in a completely open-source way and with the amount of features that exist.
 
 ---
 
@@ -64,7 +64,7 @@ I'm sure this will be one of the best examples of the Flutter Web project in a c
   - All of them using [`mocktail`](https://pub.dev/packages/mocktail).
 - Internationalization:
   - With support to 3 languages: English, Portuguese and Spanish;
-- Feature to send an email to the user using [`emailjs API`](https://www.emailjs.com/);
+- Feature to send an email to the user using [`AWS SES`](https://aws.amazon.com/ses/), [`AWS Lambda`](https://aws.amazon.com/lambda/) and [`AWS API Gateway`](https://aws.amazon.com/api-gateway/);
 - Settings:
   - Firebase Hosting;
   - Google Domains;
@@ -88,7 +88,7 @@ Challenges are always an opportunity for growth, and in this project that became
 
 One thing I realized was that Flutter Web still has a lot to evolve, but id does very well it proposes ([see here](https://docs.flutter.dev/development/platform-integration/web/faq#what-scenarios-are-ideal-for-flutter-on-the-web)). One of the main ones that still annoys me a little is the loading and rendering speed of the elements (there are some pre-load strategies, but that could be better and clearer IMHO.
 
-I feel that the project can evolve a lot, and for that reason I was very carefull with its development. For it to be simple, scalable and capable of any developer, of any level, being able to use and understand it. Also, I'll always be on the lookout for issues and PRs to improve it. 🚀
+I feel that the project can evolve a lot, and for that reason I was very carefully with its development. For it to be simple, scalable and capable of any developer, of any level, being able to use and understand it. Also, I'll always be on the lookout for issues and PRs to improve it. 🚀
 
 This project took me out of my comfort zone, and I'm very happy with the result. Also, releasing it to the community did me a lot of good. Let's grow together, because the **Forge is Daily**. 🏆
 

@@ -122,6 +122,18 @@ class AppLocalizationsPt extends AppLocalizations {
   String get emailSendedWithSuccess => 'E-mail enviado com sucesso!';
 
   @override
+  String get emailNotSended => 'Erro ao enviar e-mail!';
+
+  @override
+  String get emailTooManyRequests => 'Tente novamente mais tarde!';
+
+  @override
+  String get emailUnauthorized => 'O envio não foi autorizado!';
+
+  @override
+  String get emailUnknowError => 'Tente enviar de outra forma!';
+
+  @override
   String get letsChatCallMe => 'Vamos bater um papo, me chame:';
 
   @override

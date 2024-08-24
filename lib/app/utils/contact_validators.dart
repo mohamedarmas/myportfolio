@@ -30,6 +30,8 @@ class ContactValidators {
   }
 
   static String? email(String? value, [BuildContext? context]) {
+    value = value?.trim();
+
     if (value == null || value.isEmpty) {
       return AppTexts.get(context!).insertValidEmail;
     }
