@@ -34,6 +34,7 @@ class AppAssets {
   static const discord = 'discord.svg';
   static const udemy = 'udemy.svg';
   static const instagram = 'instagram.svg';
+  static const medium = 'discord.svg';
 
   /// Contact
   static const contactVerticalTexture =

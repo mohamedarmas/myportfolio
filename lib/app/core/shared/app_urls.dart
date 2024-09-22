@@ -6,6 +6,7 @@ class AppUrls {
   static const discord = 'https://discordapp.com/users/406074089011281921';
   static const udemy = 'https://udemy.com/user/luis-felipe-de-castro-sales/';
   static const instagram = 'https://instagram.com/felipecastrosales';
+  static const medium = 'https://medium.com/@felipecastrosales';
 
   /// Project
   static const gitHubProject = 'https://github.com/felipecastrosales/site';

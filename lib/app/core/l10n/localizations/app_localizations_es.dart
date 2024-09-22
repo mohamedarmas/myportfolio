@@ -1,5 +1,7 @@
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Spanish Castilian (`es`).
 class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
@@ -96,6 +98,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get instagram => 'Instagram';
+
+  @override
+  String get medium => 'Medium';
 
   @override
   String get followMeOnMySocialNetworks => 'Sígueme en mis redes sociales';

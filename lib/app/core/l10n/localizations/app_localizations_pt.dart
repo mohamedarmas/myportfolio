@@ -1,5 +1,7 @@
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Portuguese (`pt`).
 class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
@@ -96,6 +98,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get instagram => 'Instagram';
+
+  @override
+  String get medium => 'Medium';
 
   @override
   String get followMeOnMySocialNetworks => 'Me acompanhe nas minhas redes';

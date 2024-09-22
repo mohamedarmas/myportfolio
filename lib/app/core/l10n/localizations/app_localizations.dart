@@ -9,6 +9,8 @@ import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_pt.dart';
 
+// ignore_for_file: type=lint
+
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
 ///
@@ -280,6 +282,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Instagram'**
   String get instagram;
+
+  /// No description provided for @medium.
+  ///
+  /// In pt, this message translates to:
+  /// **'Medium'**
+  String get medium;
 
   /// No description provided for @followMeOnMySocialNetworks.
   ///
