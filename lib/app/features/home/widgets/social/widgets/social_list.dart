@@ -56,6 +56,13 @@ class SocialList extends StatelessWidget {
           onTap: () => launch(AppUrls.instagram),
         ),
         const SizedBox(height: 14),
+        SocialItem(
+          key: AppKeys.socialItemMedium,
+          title: AppTexts.get(context).medium,
+          image: AppAssets.discord,
+          onTap: () => launch(AppUrls.medium),
+        ),
+        const SizedBox(height: 14),
       ],
     );
   }

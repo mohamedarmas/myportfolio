@@ -18,6 +18,7 @@ class AppKeys {
   static const socialItemDiscord = Key('social_list_discord');
   static const socialItemUdemy = Key('social_list_udemy');
   static const socialItemInstagram = Key('social_list_instagram');
+  static const socialItemMedium = Key('social_list_medium');
 
   /// Testing keys
   static const snackBarKey = Key('tap_snack_bar');

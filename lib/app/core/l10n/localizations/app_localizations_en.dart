@@ -1,5 +1,7 @@
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
@@ -96,6 +98,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get instagram => 'Instagram';
+
+  @override
+  String get medium => 'Medium';
 
   @override
   String get followMeOnMySocialNetworks => 'Follow me on my social networks';
