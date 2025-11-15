@@ -7,16 +7,16 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get projectTitle => 'Felipe Sales | Social Links';
+  String get projectTitle => 'Mohamed Armas | Social Links';
 
   @override
-  String get felipeSales => 'Felipe Sales';
+  String get felipeSales => 'Mohamed Armas';
 
   @override
   String get flutterDeveloperInstructor => 'Flutter Developer Instructor';
 
   @override
-  String get hiIAmFelipeSales => 'Hi, I\'m Felipe Sales';
+  String get hiIAmFelipeSales => 'Hi, I\'m Mohamed Armas';
 
   @override
   String get developerFocused => 'Developer focused on applying his knowledge in practice and building amazing things through lines of code.';
@@ -25,7 +25,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appsDeveloper => '> Apps Developer';
 
   @override
-  String get applicationsDeveloper => '> Applications Developer';
+  String get applicationsDeveloper => '> Software Engineer';
 
   @override
   String get home => 'Home';
